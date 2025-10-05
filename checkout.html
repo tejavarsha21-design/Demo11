@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyShop - Checkout</title>
+<style>
+body {font-family: Arial; margin:0; background:#f8f9fa;}
+header {background:#007bff; color:white; padding:20px; text-align:center;}
+nav a {color:white; margin:0 10px; text-decoration:none; font-weight:bold;}
+form {background:white; max-width:400px; margin:40px auto; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+label {display:block; margin-top:10px;}
+input {width:100%; padding:8px; margin-top:5px;}
+button {margin-top:20px; padding:10px 20px; background:#28a745; color:white; border:none; cursor:pointer;}
+button:hover {background:#1e7e34;}
+</style>
+</head>
+<body>
+<header>
+  <h2>Checkout</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Shop</a>
+    <a href="checkout.html">Checkout</a>
+  </nav>
+</header>
+
+<form onsubmit="placeOrder(event)">
+  <h3>Your Cart</h3>
+  <p id="cartItem"></p>
+
+  <label>Name</label>
+  <input type="text" required>
+
+  <label>Email</label>
+  <input type="email" required>
+
+  <label>Address</label>
+  <input type="text" required>
+
+  <button type="submit">Place Order</button>
+</form>
+
+<script>
+document.getElementById("cartItem").innerText = "Item: " + (localStorage.getItem('cartItem') || "No items selected");
+
+function placeOrder(e){
+  e.preventDefault();
+  localStorage.removeItem('cartItem');
+  window.location.href = "thankyou.html";
+}
+</script>
+</body>
+</html>
